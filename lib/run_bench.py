@@ -399,7 +399,7 @@ def run_generic_benchmark(run_id, model_path, lora_path, prompt_type, quantizati
 			print('Model:', model_path)
 		if lora_path:
 			print('Lora:', lora_path)
-		delete_model_files = delete_cache
+		# delete_model_files = delete_cache
 
 		if benchmark_type == 'eq-bench': 
 			if language != 'en':
@@ -442,7 +442,7 @@ def run_generic_benchmark(run_id, model_path, lora_path, prompt_type, quantizati
 
 	save_and_upload_results(run_id, formatted_datetime, bench_success, prompt_type, model_path, lora_path, quantization, benchmark_type, lang_suffix, this_score, parseable, n_iterations, inference_engine, ooba_params, include_patterns, exclude_patterns, judge_params, results, run_index, last_error, bench_tries, max_bench_retries, google_spreadsheet_url, save_result_to_db_fn, eqbench_version)
 
-	cleanup(model, tokenizer, inference_engine, launch_ooba, ooba_instance, delete_model_files, model_path, include_patterns, exclude_patterns, models_to_delete, models_remaining, verbose)
+	cleanup(model, tokenizer, inference_engine, launch_ooba, ooba_instance, delete_cache, model_path, include_patterns, exclude_patterns, models_to_delete, models_remaining, verbose)
 
 
 
