@@ -3,6 +3,7 @@ import os
 import time
 import json
 import datetime
+import traceback
 from tqdm import tqdm
 from lib.load_model import load_model
 from lib.eq_bench_utils import process_question
@@ -380,7 +381,9 @@ def run_generic_benchmark(run_id, model_path, lora_path, prompt_type, quantizati
 
 			except Exception as e:  
 						print(e)
-						last_error = ' '.join(str(e).split('\n')) 
+						last_error = ' '.join(str(e).split('\n'))
+						print(e)
+						print(traceback.format_exc())
 						print(f"{benchmark_type} benchmark run failed.")
 						bench_tries += 1
 						if bench_tries <= max_bench_retries:
