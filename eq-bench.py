@@ -63,7 +63,7 @@ def main():
 	parser.add_argument('-v', action='store_true',
 							help="Display more verbose output.")
 	parser.add_argument('-l', default='en',
-							help="Set the language of the question dataset. Currently supported: en, de")
+							help="Set the language of the question dataset. Currently supported: en, de, pl")
 	parser.add_argument('-r', type=int, default=5,
 							help="Set the number of retries to attempt if a benchmark run fails. Default 5.")
 	args = parser.parse_args()
@@ -96,7 +96,7 @@ def main():
 	if args.l:  # If language is provided via command line argument
 		language = args.l.strip()
 	
-	if language not in ['en', 'de']:
+	if language not in ['en', 'de', 'pl']:
 		raise Exception('Invalid language value specified.')
 	
 	questions_fn = './data/eq_bench_v2_questions_171.json'
