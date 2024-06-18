@@ -73,15 +73,15 @@ def parse_answers_pl(text, REVISE):
 		first_pass_match = re.search(r'Pierwsze oceny:(.*?)Zmienione oceny:', text, re.DOTALL)
 		if first_pass_match:
 			first_pass_text = first_pass_match.group(1)
-			first_pass_answers = dict(re.findall(r'([\w ]+):\s+(\d+)', first_pass_text))
+			first_pass_answers = dict(re.findall(r'([\w ]+):\s*\**(\d+(?:,\d+)?)\**', first_pass_text))
 
 		# Extracting revised answers
 		revised_match = re.search(r'Zmienione oceny:(.*?)$', text, re.DOTALL)
 		if revised_match:
 			revised_text = revised_match.group(1)
-			revised_answers = dict(re.findall(r'([\w ]+):\s+(\d+)', revised_text))
+			revised_answers = dict(re.findall(r'([\w ]+):\s*\**(\d+(?:,\d+)?)\**', revised_text))
 	else:
-		first_pass_answers = dict(re.findall(r'([\w ]+):\s+(\d+)', text))
+		first_pass_answers = dict(re.findall(r'([\w ]+):\s*\**(\d+(?:,\d+)?)\**', text))
 		revised_answers = {}
 
 	return first_pass_answers, revised_answers
