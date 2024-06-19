@@ -7,6 +7,7 @@ import lib.db
 import signal
 import sys
 import io
+import torch
 
 
 ooba_instance = None
@@ -229,6 +230,7 @@ def main():
 		ooba_instance = None
 
 		try:
+			print(f"GOU Memory before {torch.cuda.mem_get_info()}")
 			run_benchmark(run_id, model_path, lora_path, prompt_type, quantization, 
 								n_iterations, resume=resume, delete_cache=args.d, 
 								max_bench_retries=args.r, n_question_attempts=3, 
@@ -243,6 +245,7 @@ def main():
 								hf_access_token=hf_access_token, ooba_request_timeout=ooba_request_timeout,
 								questions_fn=questions_fn, openai_client=openai_client, language=language,
 								REVISE=REVISE, benchmark_types=args.benchmarks, judge_params = judge_params)
+			print(f"GOU Memory after {torch.cuda.mem_get_info()}")
 		except KeyboardInterrupt:
 			if ooba_instance:
 				ooba_instance.stop()
