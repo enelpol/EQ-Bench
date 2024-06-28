@@ -402,7 +402,6 @@ def run_generic_benchmark(run_id, model_path, lora_path, prompt_type, quantizati
 			print('Model:', model_path)
 		if lora_path:
 			print('Lora:', lora_path)
-		# delete_model_files = delete_cache
 
 		if benchmark_type == 'eq-bench': 
 			if language != 'en':
