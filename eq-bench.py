@@ -245,11 +245,6 @@ def main():
 								hf_access_token=hf_access_token, ooba_request_timeout=ooba_request_timeout,
 								questions_fn=questions_fn, openai_client=openai_client, language=language,
 								REVISE=REVISE, benchmark_types=args.benchmarks, judge_params = judge_params)
-
-			gc.collect()
-			gc.collect()
-
-			torch.cuda.empty_cache()
 		except KeyboardInterrupt:
 			if ooba_instance:
 				ooba_instance.stop()
@@ -261,7 +256,7 @@ def main():
 
 		if ooba_instance:
 			ooba_instance.stop()
-			gpu_cleanup()
+		gpu_cleanup()
 
 		models_remaining = models_remaining[1:]
 
