@@ -65,8 +65,8 @@ def parse_answers_pl(text, REVISE):
 	first_pass_answers = {}
 	revised_answers = {}
 
-    # Strip out markdown
-    text = text.replace('*', '').replace('#', '')
+	# Strip out markdown
+	text = text.replace('*', '').replace('#', '')
 
 	parsing_regexp = re.compile(r'([\w ]+):\s*<?(\d+)>?')
 	# Extracting first pass answers
