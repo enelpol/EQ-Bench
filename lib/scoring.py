@@ -68,7 +68,7 @@ def parse_answers_pl(text, REVISE):
 	# Strip out markdown
 	text = text.replace('*', '').replace('#', '')
 
-	parsing_regexp = re.compile(r'([\w ]+):\s*<?(\d+)>?')
+	parsing_regexp = re.compile(r'([\w ]+): *<?(\d+)>?')
 	# Extracting first pass answers
 	if REVISE:
 		first_pass_match = re.search(r'Pierwsze oceny:(.*?)Zmienione oceny:', text, re.DOTALL)
